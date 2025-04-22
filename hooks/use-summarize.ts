@@ -15,7 +15,7 @@ export function useSummarize() {
     
     try {
       // Call the AI summarization API
-      const response = await fetch('/api/summarize', {
+      const response = await fetch('https://notes-be-33d6343b75ab.herokuapp.com/summarize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

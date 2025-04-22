@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Note } from '@/hooks/use-notes';
 import { useSummarize } from '@/hooks/use-summarize';
-
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import {
   Card,
   CardContent,
@@ -91,24 +92,28 @@ export function NoteCard({ note, onEdit, onDelete }: NoteCardProps) {
           </Button>
         )}
 
-        <AnimatePresence mode="wait">
-          {localNote.summary && (
-            <motion.div
-              key={localNote.summary}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="mt-4 p-3 bg-secondary/50 rounded-md"
-            >
-              <div className="flex items-center mb-1 text-xs font-medium text-muted-foreground">
-                <Sparkles className="mr-1 h-3 w-3" />
-                AI SUMMARY
-              </div>
-              <p className="text-sm">{localNote.summary}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+      {localNote.summary && (
+        <motion.div
+          key={localNote.summary}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="mt-4 p-4 bg-secondary/50 rounded-md prose dark:prose-invert prose-sm"
+        >
+          <div className="flex items-center mb-2 text-xs font-medium text-muted-foreground">
+            <Sparkles className="mr-1 h-4 w-4" />
+            AI SUMMARY
+          </div>
+
+          {/* Render the markdown here */}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {localNote.summary}
+          </ReactMarkdown>
+        </motion.div>
+      )}
+    </AnimatePresence>
       </CardContent>
 
       <CardFooter className="px-6 py-4 bg-secondary/20 flex justify-between">

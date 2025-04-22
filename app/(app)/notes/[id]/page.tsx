@@ -12,6 +12,8 @@ import { NoteForm } from '@/components/notes/note-form';
 import { Note } from '@/hooks/use-notes';
 import { useSummarize } from '@/hooks/use-summarize';
 import { Separator } from '@/components/ui/separator';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default function NotePage() {
   const params = useParams();
@@ -154,17 +156,21 @@ export default function NotePage() {
             </div>
 
             {note.summary && (
-              <div className="mt-8">
-                <Separator className="my-6" />
-                <div className="bg-secondary/30 rounded-lg p-4">
-                  <div className="flex items-center mb-2">
-                    <Sparkles className="h-4 w-4 mr-2 text-primary" />
-                    <h3 className="font-medium">AI Summary</h3>
-                  </div>
-                  <p>{note.summary}</p>
-                </div>
-              </div>
-            )}
+  <div className="mt-8 max-w-4xl">
+    <Separator className="my-6" />
+    <div className="bg-secondary/30 max-w-4xl rounded-lg p-4 prose prose-sm dark:prose-invert">
+      <div className="flex items-center mb-2">
+        <Sparkles className="h-4 w-4 mr-2 text-primary" />
+        <h3 className="font-medium">AI Summary</h3>
+      </div>
+
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {note.summary}
+      </ReactMarkdown>
+    </div>
+  </div>
+)}
+
           </CardContent>
           {/* {!note.summary && ( */}
             <CardFooter>
