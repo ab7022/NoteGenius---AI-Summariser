@@ -2,9 +2,14 @@
 
 A sleek, modern notes application with AI-powered summarization capabilities. Built with Next.js, TypeScript, Tailwind CSS, Shadcn UI, and Supabase.
 
+**Live Demo:** [https://note-genius-ai.vercel.app/](https://note-genius-ai.vercel.app/)  
+**Frontend GitHub:** [https://github.com/ab7022/NoteGenius---AI-Summariser](https://github.com/ab7022/NoteGenius---AI-Summariser)  
+**Backend GitHub:** [https://github.com/ab7022/Notes-genius-BE](https://github.com/ab7022/Notes-genius-BE)
+
 Watch a demonstration of the app's features: [Live Demo Video](https://drive.google.com/file/d/1ulmVXWfsIdRdWjGSt9Yp0To5syW_IxBf/view?usp=drive_link)
-backend link: [source code: ]([https://github.com/ab7022/Notes-genius-BE])
-hosted frontend on vercel and backend on heroku. because vercel only support 10 sec API timeout and it is not enough for a API call to AI.
+
+*Note: The frontend is hosted on Vercel and the backend on Heroku. This split deployment strategy is necessary because Vercel only supports a 10-second API timeout, which is insufficient for AI API calls.*
+
 ## 🌟 Features
 
 - **User Authentication**
@@ -25,7 +30,6 @@ hosted frontend on vercel and backend on heroku. because vercel only support 10 
 - **User Experience**
   - Light and dark mode themes
   - Fully responsive design (mobile, tablet, desktop)
-
   
 - **Performance**
   - Real-time updates with React Query
@@ -49,7 +53,7 @@ hosted frontend on vercel and backend on heroku. because vercel only support 10 
   - Storage for media files
   - Row-level security
 - **AI Integration**: DeepSeek API for note summarization
-- **Deployment**: Vercel for frotned. heroku for backend
+- **Deployment**: Vercel for frontend, Heroku for backend
 
 ## 📋 Prerequisites
 
@@ -68,8 +72,8 @@ You'll also need accounts with:
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/ai-notes-app.git
-   cd ai-notes-app
+   git clone https://github.com/ab7022/NoteGenius---AI-Summariser.git
+   cd NoteGenius---AI-Summariser
    ```
 
 2. Install dependencies
@@ -129,8 +133,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
    - Enable Email/Password sign-in
    - Configure Google OAuth provider (optional)
 
-
-5. Copy your Supabase URL and anon key to your `.env.local` file
+4. Copy your Supabase URL and anon key to your `.env.local` file
 
 ## 🚢 Deployment
 
@@ -147,6 +150,15 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 3. Set up environment variables in the Vercel dashboard:
    - Add all variables from your `.env.local` file
 
+### Deploying the Backend to Heroku
+
+1. Push your backend code to a separate GitHub repository
+
+2. Connect your repository to [Heroku](https://heroku.com):
+   - Create a new app
+   - Connect to your GitHub repository
+   - Configure environment variables
+   - Deploy
 
 ## 🤝 Contributing
 
@@ -171,7 +183,6 @@ Watch a demonstration of the app's features: [Live Demo Video](https://drive.goo
 ## 📧 Contact
 
 Project Lead - [bayees1@gmail.com](mailto:bayees1@gmail.com)
-
 
 ---
 
